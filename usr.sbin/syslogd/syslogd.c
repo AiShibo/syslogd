@@ -1213,6 +1213,7 @@ acceptcb(int lfd, short event, void *arg, int usetls)
 void
 tls_handshakecb(struct bufferevent *bufev, void *arg)
 {
+	/*
 	struct peer *p = arg;
 	const char *cn;
 	char *cntmp;
@@ -1236,6 +1237,7 @@ tls_handshakecb(struct bufferevent *bufev, void *arg)
 	}
 
 	bufferevent_setcb(bufev, tcp_readcb, NULL, tcp_closecb, p);
+	*/
 }
 
 /*

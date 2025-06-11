@@ -1,3 +1,5 @@
+#include <compat.h>
+
 /*	$OpenBSD: parsemsg.h,v 1.1 2022/01/13 10:34:07 martijn Exp $	*/
 
 /*

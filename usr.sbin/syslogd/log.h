@@ -1,3 +1,5 @@
+#include <compat.h>
+
 /*	$OpenBSD: log.h,v 1.4 2021/12/13 18:28:40 deraadt Exp $	*/
 
 /*

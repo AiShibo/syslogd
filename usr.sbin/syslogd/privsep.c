@@ -1,3 +1,4 @@
+
 /*	$OpenBSD: privsep.c,v 1.77 2023/10/12 22:36:54 bluhm Exp $	*/
 
 /*
@@ -33,6 +34,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <compat.h>
 #include <utmp.h>
 
 #include "log.h"
@@ -150,8 +152,11 @@ priv_init(int lockfd, int nullfd, int argc, char *argv[])
 
 	if (dup3(socks[0], 3, 0) == -1)
 		err(1, "dup3 priv sock failed");
+	closefrom(4);
+	/*
 	if (closefrom(4) == -1)
 		err(1, "closefrom 4 failed");
+	*/
 
 	snprintf(childnum, sizeof(childnum), "%d", child_pid);
 	if ((privargv = reallocarray(NULL, argc + 3, sizeof(char *))) == NULL)

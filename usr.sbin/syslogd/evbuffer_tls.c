@@ -64,6 +64,21 @@ bufferevent_add(struct event *ev, int timeout)
 	return (event_add(ev, ptv));
 }
 
+void
+bufferevent_read_pressure_cb(struct evbuffer *buf, size_t old, size_t now, void *arg) {
+	struct bufferevent *bufev = arg;
+	/* 
+	 * 	 * If we are below the watermark then reschedule reading if it's
+	 * 	 	 * still enabled.
+	 * 	 	 	 */
+	if (bufev->wm_read.high == 0 || now < bufev->wm_read.high) {
+		evbuffer_setcb(buf, NULL, NULL);
+		if (bufev->enabled & EV_READ)
+			bufferevent_add(&bufev->ev_read, bufev->timeout_read);
+	}
+}
+
+
 static void
 buffertls_readcb(int fd, short event, void *arg)
 {

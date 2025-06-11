@@ -1,3 +1,5 @@
+#include <compat.h>
+
 /*	$OpenBSD: syslogd.h,v 1.37 2023/10/12 22:36:54 bluhm Exp $ */
 
 /*
