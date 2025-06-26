@@ -1,4 +1,5 @@
-parsemsg.o: parsemsg.c /usr/include/ctype.h /usr/include/sys/cdefs.h \
+parsemsg.o: /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt \
+  parsemsg.c /usr/include/ctype.h /usr/include/sys/cdefs.h \
   /usr/include/sys/_types.h /usr/include/machine/_types.h \
   /usr/include/x86/_types.h /usr/include/machine/_limits.h \
   /usr/include/x86/_limits.h /usr/include/_ctype.h \

@@ -1,0 +1,12 @@
+diff id:000197,src:000030+000028,time:2911126,execs:7780509,op:havoc,rep:1 -> id:000198,src:000197+000126,time:2960760,execs:7876094,op:splice,rep:1
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+  New 'function' coverage: sig_got_chld()
+  New 'line' coverage: 848
+  New 'line' coverage: 850
+  New 'line' coverage: 851
+  New 'line' coverage: 853
+  New 'line' coverage: 854
+  New 'line' coverage: 855
+  New 'line' coverage: 857
+  New 'line' coverage: 858
+  New 'line' coverage: 859

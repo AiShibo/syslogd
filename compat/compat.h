@@ -13,6 +13,8 @@
 #define	LIOCSFD		_IOW('l', 127, int)
 #define	KERN_MSGBUFSIZE		38
 
+int		getdtablecount(void);
+
 /*
 #define freezero(ptr, size) free(ptr)
 #define DEF_WEAK(x)

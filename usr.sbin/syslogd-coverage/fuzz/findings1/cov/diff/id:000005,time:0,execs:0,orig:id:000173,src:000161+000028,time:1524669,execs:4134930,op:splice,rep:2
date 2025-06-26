@@ -1,0 +1,24 @@
+diff id:000004,time:0,execs:0,orig:id:000174,src:000103+000115,time:1831124,execs:4934641,op:havoc,rep:1 -> id:000005,time:0,execs:0,orig:id:000173,src:000161+000028,time:1524669,execs:4134930,op:splice,rep:2
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+  New 'function' coverage: check_tty_name()
+  New 'line' coverage: 267
+  New 'line' coverage: 269
+  New 'line' coverage: 270
+  New 'line' coverage: 272
+  New 'line' coverage: 273
+  New 'line' coverage: 274
+  New 'line' coverage: 275
+  New 'line' coverage: 276
+  New 'line' coverage: 277
+  New 'line' coverage: 280
+  New 'line' coverage: 281
+  New 'line' coverage: 544
+  New 'line' coverage: 546
+  New 'line' coverage: 547
+  New 'line' coverage: 550
+  New 'line' coverage: 554
+  New 'line' coverage: 555
+  New 'line' coverage: 559
+  New 'line' coverage: 560
+  New 'line' coverage: 561
+  New 'line' coverage: 562

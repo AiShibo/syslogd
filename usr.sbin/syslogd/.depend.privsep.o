@@ -1,4 +1,5 @@
-privsep.o: privsep.c \
+privsep.o: /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt \
+  privsep.c \
   /home/shibo/syslogd/usr.sbin/syslogd/../../compat/sys/queue.h \
   /usr/include/sys/stat.h /usr/include/sys/cdefs.h \
   /usr/include/sys/_timespec.h /usr/include/sys/_types.h \

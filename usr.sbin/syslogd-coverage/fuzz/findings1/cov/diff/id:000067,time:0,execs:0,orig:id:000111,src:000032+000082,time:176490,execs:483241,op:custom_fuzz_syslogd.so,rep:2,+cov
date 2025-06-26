@@ -1,0 +1,21 @@
+diff id:000066,time:0,execs:0,orig:id:000112,src:000086+000040,time:178788,execs:489618,op:splice,rep:2,+cov -> id:000067,time:0,execs:0,orig:id:000111,src:000032+000082,time:176490,execs:483241,op:custom_fuzz_syslogd.so,rep:2,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+  New 'line' coverage: 355
+  New 'line' coverage: 357
+  New 'line' coverage: 358
+  New 'line' coverage: 359
+  New 'line' coverage: 361
+  New 'line' coverage: 362
+  New 'line' coverage: 364
+  New 'line' coverage: 365
+  New 'line' coverage: 366
+  New 'line' coverage: 368
+  New 'line' coverage: 369
+  New 'line' coverage: 371
+  New 'line' coverage: 372
+  New 'line' coverage: 373
+  New 'line' coverage: 375
+  New 'line' coverage: 376
+  New 'line' coverage: 378
+  New 'line' coverage: 379
+  New 'line' coverage: 396

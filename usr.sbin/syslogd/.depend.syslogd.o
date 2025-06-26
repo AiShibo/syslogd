@@ -1,4 +1,5 @@
-syslogd.o: syslogd.c /usr/include/sys/ioctl.h /usr/include/sys/ioccom.h \
+syslogd.o: /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt \
+  syslogd.c /usr/include/sys/ioctl.h /usr/include/sys/ioccom.h \
   /usr/include/sys/cdefs.h /usr/include/sys/filio.h \
   /usr/include/sys/_types.h /usr/include/machine/_types.h \
   /usr/include/x86/_types.h /usr/include/machine/_limits.h \

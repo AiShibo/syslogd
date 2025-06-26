@@ -1,0 +1,62 @@
+[1;92m[+] [0mEnabled environment variable AFL_CUSTOM_MUTATOR_LIBRARY with value /home/shibo/syslogd/usr.sbin/syslogd/fuzz/../custom_fuzz_syslogd.so[0m
+[0;36mafl-fuzz++4.30c[0m based on afl by Michal Zalewski and a large online community
+[1;92m[+] [0mAFL++ is maintained by Marc "van Hauser" Heuse, Dominik Maier, Andrea Fioraldi and Heiko "hexcoder" Eißfeldt[0m
+[1;92m[+] [0mAFL++ is open source, get it at https://github.com/AFLplusplus/AFLplusplus[0m
+[1;92m[+] [0mNOTE: AFL++ >= v3 has changed defaults and behaviours - see README.md[0m
+[1;94m[*] [0mGetting to work...[0m
+[1;92m[+] [0mUsing exploration-based constant power schedule (EXPLORE)[0m
+[1;92m[+] [0mEnabled testcache with 50 MB[0m
+[1;92m[+] [0mGenerating fuzz data with a length of min=1 max=1048576[0m
+[1;92m[+] [0mLooks like we're not running on a tty, so I'll be a bit less verbose.[0m
+[1;92m[+] [0mYou have 20 CPU cores and 2 runnable tasks (utilization: 10%).[0m
+[1;92m[+] [0mTry parallel jobs - see /usr/local/afl++-llvm/share/doc/afl/fuzzing_in_depth.md#c-using-multiple-cores[0m
+[1;94m[*] [0mSetting up output directories...[0m
+[1;93m[!] [1;97mWARNING: [0mCPU affinity lock file present, waiting ...[0m
+[1;92m[+] [0mFound a free CPU core, try binding to #0.[0m
+[1;94m[*] [0mLoading custom mutator library from '/home/shibo/syslogd/usr.sbin/syslogd/fuzz/../custom_fuzz_syslogd.so'...[0m
+[1;92m[+] [0mFound 'afl_custom_mutator'.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_fuzz_count' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_post_process' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_init_trim' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_trim' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_post_trim' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_havoc_mutation' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_havoc_mutation_probability' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_queue_get' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_splice_optout' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_fuzz_send' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_post_run' not found.[0m
+[1;94m[*] [0moptional symbol 'afl_custom_queue_new_entry' not found[0m
+[1;94m[*] [0moptional symbol 'afl_custom_describe' not found.[0m
+[1;92m[+] [0mCustom mutator '/home/shibo/syslogd/usr.sbin/syslogd/fuzz/../custom_fuzz_syslogd.so' installed successfully.[0m
+[1;94m[*] [0mValidating target binary...[0m
+[1;94m[*] [0mScanning 'seeds'...[0m
+[1;94m[*] [0mCreating hard links for all input files...[0m
+[1;92m[+] [0mLoaded a total of 1 seeds.[0m
+[1;94m[*] [0mSpinning up the fork server...[0m
+[1;92m[+] [0mAll right - new fork server model v1 is up.[0m
+[1;94m[*] [0mTarget map size: 5329[0m
+[1;94m[*] [0mLoaded 61 autodictionary entries[0m
+[1;94m[*] [0mNo auto-generated dictionary tokens to reuse.[0m
+[1;92m[+] [0mLoaded a total of 61 extras.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000000,time:0,execs:0,orig:mutated_output.bin'...[0m
+[1;90m    len = 328, map size = 33, exec speed = 31961 us, hash = 4876b094e6d084d5
+[0m[1;92m[+] [0mAll test cases processed.[0m
+[1;93m[!] [1;97mWARNING: [0m[1;91mThe target binary is pretty slow! See /usr/local/afl++-llvm/share/doc/afl/fuzzing_in_depth.md#i-improve-the-speed[0m
+[1;92m[+] [0mHere are some useful stats:
+
+[1;90m    Test case count : [0m1 favored, 0 variable, 0 ignored, 1 total
+[1;90m       Bitmap range : [0m33 to 33 bits (average: 33.00 bits)
+[1;90m        Exec timing : [0m32.0k to 32.0k us (average: 32.0k us)
+[0m
+[1;94m[*] [0mNo -t option specified, so I'll use an exec timeout of 100 ms.[0m
+[1;92m[+] [0mAll set and ready to roll![0m
+[1;94m[*] [0mFuzzing test case #0 (1 total, 0 crashes saved, state: started :-), mode=explore, perf_score=100, weight=1, favorite=1, was_fuzzed=0, exec_us=31961, hits=0, map=33, ascii=0, run_time=0:00:00:00)...[0m
+[?25h[1;91m
+
++++ Testing aborted by user +++
+[0m[1;94m[*] [0mStatistics: 14 new corpus items found, 1.05% coverage achieved, 0 crashes saved, 0 timeouts saved, total runtime 0 days, 0 hrs, 0 min, 17 sec[0m
+[1;94m[*] [0mWriting state_20/fuzzer07/fastresume.bin ...[0m
+[1;92m[+] [0mWritten fastresume.bin with 31031 bytes![0m
+[1;92m[+] [0mWe're done here. Have a nice day!
+[0m

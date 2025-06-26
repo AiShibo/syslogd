@@ -1,4 +1,5 @@
 getdtablecount.o: \
+  /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt \
   /home/shibo/syslogd/usr.sbin/syslogd/../../compat/getdtablecount.c \
   /usr/include/sys/types.h /usr/include/sys/cdefs.h \
   /usr/include/machine/endian.h /usr/include/x86/endian.h \

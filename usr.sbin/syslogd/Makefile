@@ -11,8 +11,8 @@ CFLAGS+= -I/usr/local/include
 CFLAGS+= -I${.CURDIR}/../../include
 
 .PATH: ${.CURDIR}/../../compat
+LDFLAGS+= -L${.CURDIR}/../../libevent/src/lib/libevent -Wl,-rpath,${.CURDIR}/../../libevent/src/lib/libevent
 LDFLAGS+= -L/usr/local/lib
-LDFLAGS+= -L${.CURDIR}/../../libevent/src/lib/libevent
 MAN=	syslogd.8 syslog.conf.5
 LDADD=	-levent -ltls -lssl -lcrypto
 DPADD=	${LIBEVENT} ${LIBTLS} ${LIBSSL} ${LIBCRYPTO}

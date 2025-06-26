@@ -1,4 +1,5 @@
-ttymsg.o: ttymsg.c /usr/include/sys/stat.h /usr/include/sys/cdefs.h \
+ttymsg.o: /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt \
+  ttymsg.c /usr/include/sys/stat.h /usr/include/sys/cdefs.h \
   /usr/include/sys/_timespec.h /usr/include/sys/_types.h \
   /usr/include/machine/_types.h /usr/include/x86/_types.h \
   /usr/include/machine/_limits.h /usr/include/x86/_limits.h \

@@ -1,0 +1,26 @@
+# All functions / lines in this file were executed by at
+# least one AFL test case. See the cov/id-delta-cov file
+# for more information.
+File: /home/shibo/syslogd/compat/getdtablecount.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/evbuffer_tls.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/log.c
+    function: log_init()
+    function: log_procinit()
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/parsemsg.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+    function: check_log_name()
+    function: check_tty_name()
+    function: increase_state()
+    function: may_read()
+    function: must_read()
+    function: must_write()
+    function: open_file()
+    function: open_pipe()
+    function: priv_exec()
+    function: sig_got_chld()
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep_fdpass.c
+    function: send_fd()
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/ringbuf.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/syslogd.c
+    function: main()
+File: /home/shibo/syslogd/usr.sbin/syslogd-coverage/ttymsg.c

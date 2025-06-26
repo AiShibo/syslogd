@@ -1,0 +1,7 @@
+diff id:000161,time:0,execs:0,orig:id:000017,src:000007+000003,time:4040,execs:10771,op:custom_fuzz_syslogd.so,rep:7 -> id:000162,time:0,execs:0,orig:id:000016,src:000000+000009,time:1771,execs:4704,op:havoc,rep:2,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+  New 'line' coverage: 381
+  New 'line' coverage: 382
+  New 'line' coverage: 398
+  New 'line' coverage: 401
+  New 'line' coverage: 405

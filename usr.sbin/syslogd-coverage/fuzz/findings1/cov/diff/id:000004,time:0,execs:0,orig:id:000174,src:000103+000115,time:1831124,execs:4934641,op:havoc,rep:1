@@ -1,0 +1,17 @@
+diff id:000003,time:0,execs:0,orig:id:000175,src:000112+000124,time:1903157,execs:5127264,op:splice,rep:1 -> id:000004,time:0,execs:0,orig:id:000174,src:000103+000115,time:1831124,execs:4934641,op:havoc,rep:1
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-coverage/privsep.c
+  New 'function' coverage: must_write()
+  New 'line' coverage: 421
+  New 'line' coverage: 422
+  New 'line' coverage: 425
+  New 'line' coverage: 426
+  New 'line' coverage: 428
+  New 'line' coverage: 429
+  New 'line' coverage: 430
+  New 'line' coverage: 431
+  New 'line' coverage: 432
+  New 'line' coverage: 433
+  New 'line' coverage: 434
+  New 'line' coverage: 439
+  New 'line' coverage: 910
+  New 'line' coverage: 930

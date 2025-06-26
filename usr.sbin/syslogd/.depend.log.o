@@ -1,11 +1,11 @@
-log.o: log.c /usr/include/err.h /usr/include/sys/cdefs.h \
-  /usr/include/sys/_types.h /usr/include/machine/_types.h \
-  /usr/include/x86/_types.h /usr/include/machine/_limits.h \
-  /usr/include/x86/_limits.h /usr/include/errno.h /usr/include/stdio.h \
-  /usr/include/sys/_null.h /usr/include/stdlib.h /usr/include/string.h \
-  /usr/include/strings.h /usr/include/xlocale/_strings.h \
-  /usr/include/xlocale/_string.h /usr/include/syslog.h \
-  /usr/include/time.h /usr/include/sys/_clock_id.h \
+log.o: /usr/local/llvm16/lib/clang/16/share/asan_ignorelist.txt log.c \
+  /usr/include/err.h /usr/include/sys/cdefs.h /usr/include/sys/_types.h \
+  /usr/include/machine/_types.h /usr/include/x86/_types.h \
+  /usr/include/machine/_limits.h /usr/include/x86/_limits.h \
+  /usr/include/errno.h /usr/include/stdio.h /usr/include/sys/_null.h \
+  /usr/include/stdlib.h /usr/include/string.h /usr/include/strings.h \
+  /usr/include/xlocale/_strings.h /usr/include/xlocale/_string.h \
+  /usr/include/syslog.h /usr/include/time.h /usr/include/sys/_clock_id.h \
   /usr/include/sys/timespec.h /usr/include/sys/_timespec.h \
   /usr/include/xlocale/_time.h log.h \
   /home/shibo/syslogd/usr.sbin/syslogd/../../compat/compat.h \

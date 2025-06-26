@@ -1,0 +1,7 @@
+# environment variables:
+AFL_CUSTOM_MUTATOR_LIBRARY=/home/shibo/syslogd/usr.sbin/syslogd/fuzz/../custom_fuzz_syslogd.so
+AFL_CUSTOM_INFO_PROGRAM=../syslogd
+AFL_CUSTOM_INFO_PROGRAM_ARGV=-P 1234
+AFL_CUSTOM_INFO_OUT=state/primary
+# command line:
+'afl-fuzz' '-M' 'primary' '-i' 'seeds' '-o' 'state' '--' '../syslogd' '-P' '1234'
