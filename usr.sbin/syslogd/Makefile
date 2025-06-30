@@ -2,7 +2,7 @@
 
 PROG=	syslogd
 SRCS=	evbuffer_tls.c log.c parsemsg.c privsep.c privsep_fdpass.c ringbuf.c \
-	syslogd.c ttymsg.c getdtablecount.c
+	syslogd.c ttymsg.c getdtablecount.c harness.c
 
 
 CFLAGS+= -I${.CURDIR}/../../libevent/src/lib/libevent

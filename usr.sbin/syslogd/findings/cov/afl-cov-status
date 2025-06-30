@@ -1,0 +1,3 @@
+afl_cov_pid     : 85972
+afl_cov_version : 0.7.0
+command_line    : /usr/local/bin/afl-cov -d ./findings --coverage-cmd ./syslogd -P 1234 < AFL_FILE --code-dir .

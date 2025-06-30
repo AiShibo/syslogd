@@ -40,6 +40,8 @@
 #include "log.h"
 #include "syslogd.h"
 
+#define log_debug(...) printf(__VA_ARGS__)
+
 /*
  * syslogd can only go forward in these states; each state should represent
  * less privilege.   After STATE_INIT, the child is allowed to parse its
@@ -94,6 +96,7 @@ static void sig_got_chld(int);
 static void must_read(int, void *, size_t);
 static void must_write(int, void *, size_t);
 static int  may_read(int, void *, size_t);
+extern size_t custom_harness(uint8_t *buf, size_t buf_size, uint8_t **out_buf);
 
 static struct passwd *pw;
 
@@ -217,8 +220,102 @@ priv_exec(char *conf, int numeric, int child, int argc, char *argv[])
 		errx(1, "exec without priv");
 	argv[argc -= 2] = NULL;
 
-	sock = 3;
-	closefrom(4);
+	/* Begin AFL++ harness integration */
+	int harness_socks[2];
+	uint8_t *input_buf = NULL;
+	uint8_t *parsed_buf = NULL;
+	size_t input_size = 0;
+	size_t parsed_size = 0;
+	size_t bytes_read = 0;
+	const size_t max_input = 4000;
+	
+	/* Allocate buffer for AFL++ input */
+	input_buf = malloc(max_input);
+	if (!input_buf)
+		err(1, "malloc input buffer failed");
+	
+	/* Read exactly 4000 bytes from stdin (AFL++ fuzzer input) */
+	while (bytes_read < max_input) {
+		ssize_t ret = read(STDIN_FILENO, input_buf + bytes_read, max_input - bytes_read);
+		if (ret <= 0)
+			break;
+		bytes_read += ret;
+	}
+	input_size = bytes_read;
+	
+	/* Call custom harness to parse the input */
+	parsed_size = custom_harness(input_buf, input_size, &parsed_buf);
+	
+	/* Create Unix domain socket pair */
+	if (socketpair(AF_UNIX, SOCK_STREAM, 0, harness_socks) == -1) {
+		free(input_buf);
+		if (parsed_buf) free(parsed_buf);
+		err(1, "socketpair for harness failed");
+	}
+	log_debug("[priv]: created socket pair: fd %d and %d\n", harness_socks[0], harness_socks[1]);
+	
+	/* Make harness read socket non-blocking */
+	int harness_flags;
+	if ((harness_flags = fcntl(harness_socks[0], F_GETFL)) == -1) {
+		free(input_buf);
+		if (parsed_buf) free(parsed_buf);
+		err(1, "fcntl F_GETFL on harness socket failed");
+	}
+	harness_flags |= O_NONBLOCK;
+	if (fcntl(harness_socks[0], F_SETFL, harness_flags) == -1) {
+		free(input_buf);
+		if (parsed_buf) free(parsed_buf);
+		err(1, "fcntl F_SETFL on harness socket failed");
+	}
+	
+	/* Write parsed data to the socket */
+	if (parsed_size > 0 && parsed_buf) {
+		log_debug("[priv]: writing %zu bytes to harness socket\n", parsed_size);
+		
+		/* START: Hexdump of parsed data before writing to socket */
+		log_debug("[priv]: hexdump of parsed data (%zu bytes):\n", parsed_size);
+		for (size_t i = 0; i < parsed_size; i += 16) {
+			printf("%08zx: ", i);
+			for (size_t j = 0; j < 16 && (i + j) < parsed_size; j++) {
+				printf("%02x ", parsed_buf[i + j]);
+			}
+			for (size_t j = parsed_size - i; j < 16; j++) {
+				printf("   ");
+			}
+			printf(" |");
+			for (size_t j = 0; j < 16 && (i + j) < parsed_size; j++) {
+				unsigned char c = parsed_buf[i + j];
+				printf("%c", (c >= 32 && c <= 126) ? c : '.');
+			}
+			printf("|\n");
+		}
+		/* END: Hexdump of parsed data before writing to socket */
+		
+		ssize_t written = 0;
+		size_t total_written = 0;
+		while (total_written < parsed_size) {
+			written = write(harness_socks[1], parsed_buf + total_written, parsed_size - total_written);
+			if (written <= 0) {
+				if (errno == EAGAIN || errno == EINTR)
+					continue;
+				log_debug("[priv]: write failed: %d\n", errno);
+				break;
+			}
+			total_written += written;
+		}
+		log_debug("[priv]: wrote %zu bytes total\n", total_written);
+	} else {
+		log_debug("[priv]: no data to write (parsed_size=%zu, parsed_buf=%p)\n", parsed_size, parsed_buf);
+	}
+	
+	/* Keep both ends open to prevent SIGPIPE */
+	sock = harness_socks[0];
+	
+	/* Cleanup */
+	free(input_buf);
+	if (parsed_buf)
+		free(parsed_buf);
+	/* End AFL++ harness integration */
 
 	child_pid = child;
 
@@ -254,17 +351,23 @@ priv_exec(char *conf, int numeric, int child, int argc, char *argv[])
 	restart = 0;
 
 	while (cur_state < STATE_QUIT) {
-		if (may_read(sock, &cmd, sizeof(int)))
+		log_debug("[priv]: waiting for command on socket %d\n", sock);
+		if (may_read(sock, &cmd, sizeof(int))) {
+			log_debug("[priv]: may_read failed, breaking loop\n");
 			break;
+		}
+		log_debug("[priv]: received command %d (0x%08x)\n", cmd, cmd);
 		switch (cmd) {
 		case PRIV_OPEN_TTY:
-			log_debug("[priv]: msg PRIV_OPEN_TTY received");
+			printf("[priv]: msg PRIV_OPEN_TTY received\n");
 			/* Expecting: length, path */
 			must_read(sock, &path_len, sizeof(size_t));
 			if (path_len == 0 || path_len > sizeof(path))
 				_exit(1);
 			must_read(sock, &path, path_len);
-			path[path_len - 1] = '\0';
+			printf("priv_open_tty after must_read\n");
+			printf("path_len is %d\n", path_len);
+			// path[path_len - 1] = '\0';
 			check_tty_name(path, sizeof(path));
 			fd = open(path, O_WRONLY|O_NONBLOCK);
 			send_fd(sock, fd);
@@ -605,11 +708,13 @@ bad_path:
 static void
 increase_state(int state)
 {
+	log_debug("[priv]: increase_state called: cur_state=%d, new_state=%d\n", cur_state, state);
 	if (state <= cur_state)
-		errx(1, "attempt to decrease or match current state");
+		errx(1, "attempt to decrease or match current state (cur=%d, new=%d)", cur_state, state);
 	if (state < STATE_INIT || state > STATE_QUIT)
 		errx(1, "attempt to switch to invalid state");
 	cur_state = state;
+	log_debug("[priv]: state changed to %d\n", cur_state);
 }
 
 /* Open console or a terminal device for writing */
@@ -864,9 +969,11 @@ may_read(int fd, void *buf, size_t n)
 		res = read(fd, s + pos, n - pos);
 		switch (res) {
 		case -1:
+			exit(-1);
 			if (errno == EINTR || errno == EAGAIN)
 				continue;
 		case 0:
+			exit(-1);
 			return (1);
 		default:
 			pos += res;
@@ -898,11 +1005,13 @@ must_read(int fd, void *buf, size_t n)
 	}
 }
 
+
 /* Write data with the assertion that it all has to be written, or
  * else abort the process.  Based on atomicio() from openssh. */
 static void
 must_write(int fd, void *buf, size_t n)
 {
+	/*
 	char *s = buf;
 	ssize_t res;
 	size_t pos = 0;
@@ -919,4 +1028,5 @@ must_write(int fd, void *buf, size_t n)
 			pos += res;
 		}
 	}
+	*/
 }

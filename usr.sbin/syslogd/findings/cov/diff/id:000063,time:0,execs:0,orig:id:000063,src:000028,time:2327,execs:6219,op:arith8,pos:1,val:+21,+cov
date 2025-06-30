@@ -1,0 +1,21 @@
+diff id:000062,time:0,execs:0,orig:id:000062,src:000028,time:2310,execs:6177,op:flip4,pos:1 -> id:000063,time:0,execs:0,orig:id:000063,src:000028,time:2327,execs:6219,op:arith8,pos:1,val:+21,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep.c
+  New 'line' coverage: 430
+  New 'line' coverage: 432
+  New 'line' coverage: 433
+  New 'line' coverage: 434
+  New 'line' coverage: 436
+  New 'line' coverage: 437
+  New 'line' coverage: 439
+  New 'line' coverage: 440
+  New 'line' coverage: 441
+  New 'line' coverage: 443
+  New 'line' coverage: 444
+  New 'line' coverage: 446
+  New 'line' coverage: 447
+  New 'line' coverage: 448
+  New 'line' coverage: 450
+  New 'line' coverage: 451
+  New 'line' coverage: 453
+  New 'line' coverage: 454
+  New 'line' coverage: 471

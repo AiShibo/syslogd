@@ -1,0 +1,12 @@
+diff id:000095,time:0,execs:0,orig:id:000095,src:000071,time:20543,execs:53766,op:havoc,rep:5 -> id:000096,time:0,execs:0,orig:id:000096,src:000071,time:21464,execs:56100,op:havoc,rep:16,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep.c
+  New 'line' coverage: 559
+  New 'line' coverage: 561
+  New 'line' coverage: 564
+  New 'line' coverage: 566
+  New 'line' coverage: 572
+  New 'line' coverage: 576
+  New 'line' coverage: 577
+  New 'line' coverage: 582
+  New 'line' coverage: 589
+  New 'line' coverage: 590

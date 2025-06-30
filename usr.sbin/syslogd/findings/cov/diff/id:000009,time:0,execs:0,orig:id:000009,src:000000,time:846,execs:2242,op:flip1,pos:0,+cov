@@ -1,0 +1,18 @@
+diff id:000008,time:0,execs:0,orig:id:000008,src:000000,time:842,execs:2233,op:flip1,pos:0,+cov -> id:000009,time:0,execs:0,orig:id:000009,src:000000,time:846,execs:2242,op:flip1,pos:0,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep.c
+  New 'function' coverage: must_write()
+  New 'line' coverage: 1010
+  New 'line' coverage: 496
+  New 'line' coverage: 497
+  New 'line' coverage: 500
+  New 'line' coverage: 501
+  New 'line' coverage: 503
+  New 'line' coverage: 504
+  New 'line' coverage: 505
+  New 'line' coverage: 506
+  New 'line' coverage: 507
+  New 'line' coverage: 508
+  New 'line' coverage: 509
+  New 'line' coverage: 514
+  New 'line' coverage: 516
+  New 'line' coverage: 990

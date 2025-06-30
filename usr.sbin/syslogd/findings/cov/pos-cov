@@ -1,0 +1,30 @@
+# All functions / lines in this file were executed by at
+# least one AFL test case. See the cov/id-delta-cov file
+# for more information.
+File: /home/shibo/syslogd/compat/getdtablecount.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/evbuffer_tls.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/harness.c
+    function: build_message_six()
+    function: build_simple_message()
+    function: build_single_str_message()
+    function: custom_harness()
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/log.c
+    function: log_init()
+    function: log_procinit()
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/parsemsg.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep.c
+    function: check_log_name()
+    function: check_tty_name()
+    function: increase_state()
+    function: may_read()
+    function: must_read()
+    function: must_write()
+    function: open_file()
+    function: open_pipe()
+    function: priv_exec()
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep_fdpass.c
+    function: send_fd()
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/ringbuf.c
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/syslogd.c
+    function: main()
+File: /home/shibo/syslogd/usr.sbin/syslogd-cov/ttymsg.c

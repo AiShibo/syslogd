@@ -1,0 +1,18 @@
+diff id:000007,time:0,execs:0,orig:id:000007,src:000000,time:839,execs:2225,op:flip1,pos:0 -> id:000008,time:0,execs:0,orig:id:000008,src:000000,time:842,execs:2233,op:flip1,pos:0,+cov
+Src file: /home/shibo/syslogd/usr.sbin/syslogd-cov/privsep.c
+  New 'function' coverage: open_pipe()
+  New 'line' coverage: 372
+  New 'line' coverage: 373
+  New 'line' coverage: 549
+  New 'line' coverage: 551
+  New 'line' coverage: 552
+  New 'line' coverage: 553
+  New 'line' coverage: 554
+  New 'line' coverage: 557
+  New 'line' coverage: 558
+  New 'line' coverage: 613
+  New 'line' coverage: 667
+  New 'line' coverage: 670
+  New 'line' coverage: 680
+  New 'line' coverage: 681
+  New 'line' coverage: 682
